@@ -1,0 +1,23 @@
+{
+    "C_Cpp.default.compilerPath": "C:/msys64/ucrt64/bin/gcc.exe",
+    "C_Cpp.errorSquiggles": "enabled",
+    // Gợi Ý
+    "editor.suggestOnTriggerCharacters": true,
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": false
+    },
+    "editor.wordBasedSuggestions": "matchingDocuments",
+    
+    // Phát Hiện Lỗi
+    "problems.autoReveal": true,
+    "editor.parameterHints.enabled": true,
+    "editor.hover.enabled": "on",
+    
+    // Tự động hoàn thành
+    "editor.autoClosingBrackets": "always",
+    "editor.autoClosingQuotes": "always",
+    "editor.formatOnType": true,
+    "editor.formatOnSave": true
+}

@@ -1,0 +1,71 @@
+                Tương tác file
+    Xử lý tệp được sử dụng đẻ lưu trữ dữ liệu vĩnh viễn trong máy tính. Sử dụng xử lý tệp chúng có thể lưu trữ dữ liệu của mình trong bộ nhớ thứ cấp ( Đĩa cứng)        
+
+    - Các bước xử lý:
+    For achieving file handling we need to follow the following steps:
+        + Step 1: Naming a file - Đặt tên file
+        + Step 2: Opening a file  - Mở file
+        + Step 3: Writing data into the file  - Viết file
+        + Step 4: Reading data into the file  - Đọc file
+        + Step 5: Closing a file    - Đóng file
+
+  - Luồng trong C++ :  (Stream- Luồng)
+        + Chúng ta đưa dữ liệu vào cho chương trình đang thực thi và chương trình thực thi trả lại dữ liệu
+        + Chuỗi byte được đưa vào làm dữ liệu vào cho chương trình đang thực thi và chuõi byte xuất ra từ
+    chương trình đang thực thi được gọi là luồng. Nói cách khác luồng không gì khác ngoài luồng
+    dữ liệu theo trình tự
+        + Hoạt đông nhập và xuất giữa chương trình đang thực thi và các thiết bị như bàn phím và màn hình gọi là "hoạt động I/O của bàn điều khiển"
+        + Hoạt động nhập xuất giữa chương trình đang thực thi các tệp được gọi là "Hoạt động I/O của đĩa"
+    - Các lớp cho hoạt động luồng tập tin:
+      Hệ thống I/O của C++ chứa 1 tập hợp các lớp định nghĩa các phương thức xử lý tệp. Chúng bao gồm các lớp ifstream, ofstream và fstream.
+      Các lớp này được bắt nguồn từ fstream cà từ lớp iostream tương ứng.
+      Các lớp này được thiết kế để quản lý các tệp đĩa, được khai báo trong fstream và do chúng ta
+    phải đưa tệp này vào bất kỳ chương trình nào sử dụng tệp.
+      Sử lý tệp là điều cần thiết để lưu trữ và truy xuất dữ liệu trong các ứng dụng.
+    - Trong C++ các tệp chủ yếu được xử lý bằng cách sử dụng 3 lớp
+    fstream (file stream), ostream (out file stream) và istream( in file stream) có sẵn trong 'fstream headerfile'    
+        + ofstream: Lớp luồng để ghi vào tệp
+        + ifstream: Lớp luồng để đọc vào tệp
+        + fstream: Lớp luồng để ghi và đọc vào tệp
+
+    1. ios
+    ios (input output stream ) là lớp cơ sở cho các lớp khác trong hệ thống I/O
+    Lớp này cung cấp các chức năng cần thiết cho tất cả các lớp kế thừa, giúp thực hiện các thao tác nhập và xuất
+    Các thuộc tính và phương thức của lớp này là nền tảng cho các thao tác I/O C++
+    2. istream
+    istream (input stream) là lớp kế thừa từ lớp ios
+    Lớp này xử lý các luồng đầu vào
+    Toán tử trích xuất (>>): Toán tử này được nạp chồng trong lớp istream để được dữ liệu từ luồng đầo vào (ví dụ: Tệp tin hoặc bàn phím)
+    Lớp này cũng định nghĩa các hàm nhập như:
+      get(): Đọc 1 ký tự
+      getline(): Đọc 1 dòng
+      read(): Đọc 1 số byte từ Luồng
+    3. ostream
+    ostream (output stream) là lớp kế thừa từ lớp ios
+    Lớp này xử lý các luồng đầu ra
+    Toán tử chèn (<<): Toán tử này được nạp cchoongf trong lớp ostream để ghi dữ liệu vào luồng đầu ra ( ví dụ: đến tệp tin hoặc màn hình)   
+    Lớp này định nghĩa các hàm xuất như:
+      put(): Ghi 1 ký tự
+      write(): Ghi 1 số byte vào luồng
+    4. streambuf
+    streambuf là lớp quản lý bộ đệm cho các luồng đầu vào và đầu ra
+    Lớp này chứa 1 con trỏ trỏ đếm bộ nhớ đệm (buffer) để xử lý các dữ liệu trước khi được gửi đến hoặc nhận từ các luồng 
+    5. fstreambase
+    fstreambase cung cấp các thao tác chung cho các luồng tệp
+    Đây là lớp cơ sở cho các lớp fstream, ifstream và ofstream
+    Lớp này cchuwas cácc hàm như open() và close() để mở và đóng các tệp
+    6. ifstream  
+    ifstream là lớp dành cho các thao tác nhập
+    Nó chứa hàm open() với các chế độ nhập mặc định
+    Kế thừa các hàm từ lớp istream, bao gồm get(), getline(), read(), seekg() và tellg() để quản lý đầu vào từ tệp
+    7. ofstream
+    ofstream là lớp dành cho các thao tác xuất.
+    Nó chứa hàm open() với chế độ xuất mặc định
+    Kế thừa các hàm từ lớp ostream, bao gồm put(), write(), seekp() và tell() để quản lý đầu ra đến tệp
+    8. fstream 
+    fstream cung cấp hỗ trợ cho các thao tác nhập và xuất đồng thời
+    Nó kế thừa tất ả các hàm từ lớp istream và ostream thông qua lớp iostream ccho phép bạn làm việc với các tệp tin 1 cách linh hoạt
+    
+    //Lưu ý: 💕💕💕
+      ❤️ Không thể vừa ghi vừa đọc file khi chưa đóng file trước the cách cơ bản
+      👌 Có thể sử dụng 1 số cách để vừa đọc vùa ghi không cần đóng file

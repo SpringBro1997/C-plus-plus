@@ -1,0 +1,82 @@
+/*  
+ Tính Đa Hình: virtual void methodName()
+    -K/n: 
+        Tính đa hình (Polymorphism) trong C++ cho phép 1 hàm hoặc phương thức hoạt động khác nhau dựa
+        trên đối tượng mà nó đang được gọi. Đặc điểm này chủ yếu được thực hiện thông qua:
+            
+            + Phương thức ảo thông thường: Phương thức có từ khoá "virtual", nhưng không phải là phương thức ảo thuần tuý
+                 virtual void methodName(){}
+                 sử dụng void methodName() override{} để ghi đè
+                - K/n:Cho phép lớp dẫn xuất (lớp con) ghi đè phương thức từ lớp cơ sở (lớp cha), nhưng lớp cơ sở vẫn có thể được khởi tạo và sử dụng
+            
+            + Phương thức ảo thuần tuý: Phương thức được khai báo bằng cách sử dụng 
+            cú pháp "virtual void methodName() =0; - Không có định nghĩa trong lớp cơ sở (lớp cha)
+                - K/n: Yêu cầu lớp dẫn xuất (Lớp con ) phải ghi đè phương thức này, đồng thời biến lớp cơ sở (lớp cha) thành lớp trừu tượng (abstract), không thể khởi tạo trực tiếp 
+    - Chú ý: 
+          + Tính đa hình trong C++ cho phép các phương thức có hành vi khác nhau dựa trên đối tượng mà chúng đang được goi
+          + Phuong thức ảo thông thường và ảo thuần tuý đều hỗ trợ tính đa hình, nhưng với các cách sử dụng và giới hạn khác nhau
+          + Việc sử dụng con trỏ của lớp cha để trỏ đến đới tượng lớp dẫn xuất trong Heap- Memory là một cách mạnh mẽ để tận dụng tính đa hình trong C++
+ */
+
+//Ví dụ về phương thức ảo thông thường
+   #include<iostream>
+   struct Animal //Struct cơ sở (cha)
+   {
+       public:
+       // Phương thức ảo thông thường
+       virtual void sleep()
+       {
+           std::cout<<"Animal are Sleeping\n";
+       }
+   };
+
+   //struct dẫn xuất (con)
+   struct Dog: public Animal
+   {
+       // Sử dụng cú pháp override để ghi đè
+       void sleep() override
+       {
+           std::cout<<"Dog is sleeping\n";
+       }
+   };
+   int main()
+   {
+       Animal a;
+       Dog b;
+       a.sleep();
+       b.sleep();
+       //Khai báo địa chỉ con trỏ thuộc lớp cơ sở
+       Dog *ptr= nullptr;
+       ptr= new Dog[3];
+       delete[] ptr;
+       return 0;
+   }
+
+//Ví dụ phương thức ảo thuần tuý
+    #include<iostream>
+    struct Animal
+    {
+        //Khai báo ảo thuần tuý
+        virtual void sleep()= 0;
+    };
+    struct Dog: Animal
+    {
+       void sleep() override
+       {
+           std::cout<<"Dog"<<'\n';
+       };
+    };
+
+    int main()
+    {
+       // Animal b; -> Không thể khởi tạo trực tiếp
+       // Khởi tạo lớp dẫn xuất
+       Dog a;
+       a.sleep();
+       // Sử dụng khai báo địa chỉ con trỏ lớp cơ sở
+       Animal *ptr= nullptr;
+       ptr= new Dog; //Lớp dẫn xuất Dog được kế thừa lớp cơ sở Animal
+       ptr->sleep();
+       delete[] ptr;
+       return 0;
+    }

@@ -1,0 +1,20 @@
+        Thư viện vector
+    a.empty()
+
+    📊 BẢNG CÔNG THỨC TÓM TẮT
+        THAO TÁC	CÔNG THỨC	                    ĐỘ PHỨC TẠP
+        Khai báo	vector<type> name;	            O(1)
+        Thêm cuối	vec.push_back(value);	        O(1) amortized
+        Xóa cuối	vec.pop_back();	                O(1)
+        Truy cập	vec[index] hoặc vec.at(index)	O(1)
+        Chèn	    vec.insert(position, value);	O(n)
+        Xóa      	vec.erase(position);	        O(n)
+        Tìm kiếm	Duyệt tuần tự	                O(n)
+        Kích thước	vec.size();                 	O(1)    
+        Xem biến khai báo rỗng hay không            name.empty()
+
+    💡 KẾT LUẬN
+        KHÔNG THỂ gán trực tiếp số nguyên cho vector: a = 10; ❌
+        PHẢI sử dụng: push_back(), khởi tạo danh sách, hoặc các phương thức khác ✅
+        KHÔNG THỂ in trực tiếp vector: cout << a; ❌
+        PHẢI duyệt qua từng phần tử để in ✅    
